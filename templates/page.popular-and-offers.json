@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "popular-and-offers",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

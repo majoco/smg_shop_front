@@ -1,0 +1,104 @@
+{% comment %}
+  En esta seccion se muestran los productos populares y las ofertas solicitadas en la prueba
+{% endcomment %}
+
+<div class="productos-populares">
+  <h1>Productos Populares</h1>
+  <div class="grid w100">
+    
+      {% assign all_products = collections.all.products %}
+      {% for product in all_products %}
+
+        {% assign band = false %}
+
+        {% for tag in product.tags %}
+          <!--<li>{{ tag }}</li>-->
+          {% if tag contains 'productos populares' %}
+            {% assign band = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if band %}
+
+          <div class="card">
+            <a href="{{ product.url }}"><img class="w100" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}"></a>
+            <a href="{{ product.url }}">
+              {{ product.title }}
+            </a>
+            <br>        
+            <p>{{ product.price | money }}</p>
+            {% if product.tags.size > 0 %}
+              <p>Tags: {{ product.tags | join: ', ' }}</p>              
+            {% else %}
+              <p>Este producto no tiene tags. {{ band  }}</p>
+            {% endif %}
+          </div>
+
+        {% endif %}
+        
+      {% endfor %}    
+    
+  </div>  
+</div>
+
+<div class="ofertas-especiales" style="margin-top: 3rem;">
+  
+    <h1>Ofertas Especiales</h1>
+    <div class="grid w100">    
+      
+        {% assign all_products = collections.all.products %}
+        {% for product in all_products %}      
+
+          {% assign band = false %}
+
+          {% for tag in product.tags %}
+            <!--<li>{{ tag }}</li>-->
+            {% if tag contains 'ofertas especiales' %}
+              {% assign band = true %}
+            {% endif %}
+          {% endfor %}
+
+          {% if band %}
+
+            <div class="card">
+              <a href="{{ product.url }}"><img class="w100" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}"></a>
+              <a href="{{ product.url }}">
+                {{ product.title }}
+              </a>
+              <br>        
+              <p>{{ product.price | money }}</p>
+              {% if product.tags.size > 0 %}
+                <p>Tags: {{ product.tags | join: ', ' }}</p>              
+              {% else %}
+                <p>Este producto no tiene tags. {{ band  }}</p>
+              {% endif %}
+            </div>
+
+          {% endif %}
+          
+        {% endfor %}          
+    </div>    
+</div>
+
+<style>
+  .productos-populares{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+  .ofertas-especiales{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+
+  .w100{
+    width: 100%;
+  }
+  .w100 .card{
+    width: calc(25% - 16px);
+  }
+
+</style>

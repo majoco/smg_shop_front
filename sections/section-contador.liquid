@@ -1,0 +1,177 @@
+{% schema %}
+{
+    "name": "t:sections.section-contador.name",
+    "tag": "section",
+    "class": "section",  
+    "settings": [
+    {
+        "type": "product",
+        "id": "product",
+        "label": "Seleccionar producto para aplicar la oferta"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Título",
+        "default": "¡Oferta especial por tiempo limitado!"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Texto del botón",
+        "default": "Comprar Ahora"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Enlace del botón"
+    },
+    {
+        "type": "text",
+        "id": "end_date",
+        "label": "Fecha de finalización (formato: 2025-07-28T23:59:59)",
+        "default": "2025-07-29T19:59:59"
+    }
+    ],
+    "presets": [
+        {
+            "name": "Contador de oferta"        
+        }
+    ]
+}
+{% endschema %}
+
+{% if section.settings.product %}
+  {% assign product = all_products[section.settings.product] %}
+
+    {% comment %}
+        muestro la sección de oferta con contador
+    {% endcomment %}
+    <div id="div-contador" class="div-contador">
+        <h2>{{ section.settings.title }}</h2>
+
+        <div class="contador-container">
+            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
+            <h3>{{ product.title }}</h3>
+
+            <p>
+            <span class="precio-anterior">{{ product.compare_at_price | money }}</span>
+            <span class="precio-nuevo">{{ product.price | money }}</span>
+            </p>
+
+            <a class="boton-oferta" href="{{ section.settings.button_link }}">
+            {{ section.settings.button_text }}
+            </a>
+
+            <div id="contador-tiempo">
+                <span id="dias">00</span>d :
+                <span id="horas">00</span>h :
+                <span id="minutos">00</span>m :
+                <span id="segundos">00</span>s
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /*Evento donde se obtiene el tiempo actual y se verifica si ya paso el tiempo de finalización, en ese caso no muestra la sección*/
+
+            var fechaFin = new Date("{{ section.settings.end_date }}").getTime();
+
+            var contadorFunction = setInterval(function () {
+                var now = new Date().getTime();
+                var sep = fechaFin - now;
+
+                if (sep < 0) {
+                    clearInterval(contadorFunction);                    
+                    document.getElementById("div-contador").className="div-contador hidden";
+                    return;
+                }
+
+                var dias = Math.floor(sep / (1000 * 60 * 60 * 24));
+                var horas = Math.floor((sep % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutos = Math.floor((sep % (1000 * 60 * 60)) / (1000 * 60));
+                var segundos = Math.floor((sep % (1000 * 60)) / 1000);
+
+                document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
+                document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+                document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
+                document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
+            }, 1000);
+        });
+    </script>
+
+    <style>        
+        .precio-anterior {
+            text-decoration: line-through;
+            color: #888;
+            margin-right: 10px;
+        }
+
+        .precio-nuevo {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .boton-oferta {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #ff6b01;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }              
+
+        .div-contador {
+            padding: 20px;
+            font-family: sans-serif;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+            width: 100%;
+            max-width: 100%;
+            padding: 60px 40px;
+            margin: auto;
+            vertical-align: middle;
+            text-align: center;
+            background: #00BCD4;
+        }
+        #contador-tiempo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 10px;
+            color: white;
+            font-size: 40px;
+        }
+        #div-contador h2{
+            font-size: 30px;
+            color: white;
+            font-weight: 600;
+        }
+
+        #div-contador h3{
+            color: white;
+            font-size: 50px;
+            margin: 5px;
+            font-weight: 600;
+        }
+        #div-contador p{
+            font-size: 30px;
+            margin: 0px;
+            color: white;
+        }
+        #div-contador .precio-anterior {
+            font-size: 30px;
+            margin: 0px;    
+        }
+        .precio-nuevo {
+            font-size: 30px;
+            margin: 0px;
+            color: white;
+        }
+    </style>
+{% endif %}
