@@ -44,22 +44,26 @@ Aca muestro los productos populares
             {% endfor %}
             {% if band %}
                 <div class="card">
-                    <div class="card-header">
-                        <a href="{{ product.url }}"><img class="w100" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}"></a>                                                            
-                        <a class="pro-titulo" href="{{ product.url }}">
-                            {{ product.title }}
-                        </a>
-                        <p class="pro-precio">{{ product.price | money }}</p>
-                        {% if product.tags.size > 0 %}
-                            <p class="pro-tags">Tags: {{ product.tags | join: ', ' }}</p>              
-                        {% else %}
-                            <p class="pro-tags">Este producto no tiene tags. {{ band  }}</p>
-                        {% endif %}                
-                    </div>
-                    <div class="card-footer">
-                        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-                        <button class="boton" type="submit">Agregar al carrito</button>
-                    </div>
+                    <div class="project-items-2 m-0 p-0 wow img-custom-anim-top" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: img-anim-top;">
+                        <div class="image">
+                            <img decoding="async" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+                        </div>
+                        <div class="card-padding">
+                            {% if product.tags.size > 0 %}
+                                <p class="pro-tags">Tags: {{ product.tags | join: ', ' }}</p>              
+                            {% else %}
+                                <p class="pro-tags">Este producto no tiene tags. {{ band  }}</p>
+                            {% endif %}
+                            <div class="content">
+                                <div class="text">
+                                    <span>{{ product.title }}</span>
+                                </div>
+                                <div class="icon">
+                                    <a href="{{ product.url }}"> <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
                 </div>
             {% endif %}            
         {% endfor %}        

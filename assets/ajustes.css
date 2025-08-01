@@ -14,6 +14,9 @@ sticky-header {
   font-size: 20px;
   font-weight: 600;
 }
+.header__icon .icon {
+  color: white;
+}
 
 /*CSS seccion productos populares y ofertas*/
 .productos-populares {
@@ -39,15 +42,19 @@ sticky-header {
 .w100 .card {
   width: calc(24% - 5px);
   margin: 5px;
-  background-color: #edeefa;
   padding: 1rem;
-  border-radius: 0.5rem;
   box-shadow: 3px 3px 3px gray;
   animation: aparecerDesdeAbajo 1s ease-out forwards;
+  border: 1.5px solid rgba(102, 102, 102, 0.24);
+  background: white;
+  border-radius: 16px;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  padding: 0px;
 }
 .w100 .card:hover {
   box-shadow: 1px 1px 2px gray;
-  background-color: rgb(250 243 237);
+  /*background-color: rgb(250 243 237);*/
 }
 
 @keyframes aparecerDesdeAbajo {
@@ -59,6 +66,29 @@ sticky-header {
     transform: translateY(0); /* Termina en su posición original */
     opacity: 1; /* Visible al final */
   }
+}
+
+.card img {
+  width: 100%;
+}
+.card-padding {
+  padding: 15px 20px 25px;
+}
+.content {
+  display: flex;
+}
+.content .text {
+  width: 100%;
+  text-decoration: none;
+  font-family: "Playwrite AU QLD", cursive;
+  line-height: normal;
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1c1d20;
+}
+.content .icon {
+  width: 50px;
 }
 
 .slide-in {
@@ -105,6 +135,10 @@ sticky-header {
   text-decoration: none;
   font-family: "Playwrite AU QLD", cursive;
   line-height: normal;
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1c1d20;
 }
 .pro-precio {
   margin: 0px;
@@ -114,12 +148,16 @@ sticky-header {
   font-family: "Amarante", serif;
   font-weight: 700;
   line-height: normal;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
 }
 .pro-tags {
   margin: 0px;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   line-height: normal;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
 }
 
 .precio-anterior {
@@ -173,6 +211,33 @@ sticky-header {
 .boton:hover {
   transform: translate(3px, 3px);
   background: #d8790d;
+}
+
+.card .icon a {
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid #ff6d4d !important;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1c1d20;
+  transform: rotate(-45deg);
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+}
+.card .icon a:hover {
+  background-color: #ff6d4d !important;
+  transform: rotate(0);
+}
+.fa-solid,
+.fas {
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 900;
+}
+.fa-arrow-right:before {
+  content: "\f061";
 }
 
 /*CSS de seccion contador*/
