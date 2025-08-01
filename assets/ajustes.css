@@ -266,6 +266,31 @@ sticky-header {
   font-family: Open Sans, sans-serif;
   color: #be1719;
 }
+#mc_embed_signup .button {
+  font-family: Open Sans, sans-serif;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  filter: drop-shadow(6px 6px 0 #b26a13);
+  position: relative;
+  text-transform: uppercase;
+  transform: translate(0);
+  transition: all 0.3s;
+  white-space: nowrap;
+  z-index: 10;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  line-height: 1.625rem;
+  cursor: pointer;
+  background-color: #f29022 !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  border: 1px solid #f29022 !important;
+}
+#mc_embed_signup .button:hover {
+  transform: translate(3px, 3px);
+  background: #d8790d;
+}
 
 /*Pagina producto*/
 .metadatos strong {
@@ -277,6 +302,56 @@ sticky-header {
   color: #1986a1;
   font-size: 22px;
   line-height: normal;
+}
+.product-form__submit {
+  font-family: Open Sans, sans-serif;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  filter: drop-shadow(6px 6px 0 #b26a13);
+  position: relative;
+  text-transform: uppercase;
+  transform: translate(0);
+  transition: all 0.3s;
+  white-space: nowrap;
+  z-index: 10;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  line-height: 1.625rem;
+  cursor: pointer;
+  background: #f29022;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #f29022;
+}
+.product-form__submit:hover {
+  transform: translate(3px, 3px);
+  background-color: #d8790d;
+}
+.shopify-payment-button__button {
+  font-family: Open Sans, sans-serif;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  filter: drop-shadow(6px 6px 0 #b26a13);
+  position: relative;
+  text-transform: uppercase;
+  transform: translate(0);
+  transition: all 0.3s;
+  white-space: nowrap;
+  z-index: 10;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  line-height: 1.625rem;
+  cursor: pointer;
+  background-color: #f29022 !important;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #f29022;
+}
+.shopify-payment-button__button:hover {
+  transform: translate(3px, 3px);
+  background-color: #d8790d;
 }
 
 /*optimizando footer*/
