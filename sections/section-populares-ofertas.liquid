@@ -24,20 +24,15 @@
     ]
 }
 {% endschema %}
-
 {% comment %}
 Aca muestro los productos populares
 {% endcomment %}
-
 <div class="productos-populares">
-    <h1>Productos Populares</h1>
-    <div class="grid w100">
-        
+    <h1 class="titulo">Productos Populares</h1>
+    <div class="grid w100">        
         {% assign all_products = collections.all.products %}
         {% for product in all_products %}
-
             {% assign band = false %}
-
             {% for tag in product.tags %}
                 <!--<li>{{ tag }}</li>-->
                 {% comment %}
@@ -47,42 +42,38 @@ Aca muestro los productos populares
                     {% assign band = true %}
                 {% endif %}
             {% endfor %}
-
             {% if band %}
-
-            <div class="card">
-                <a href="{{ product.url }}"><img class="w100" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}"></a>
-                <a class="pro-titulo" href="{{ product.url }}">
-                    {{ product.title }}
-                </a>                    
-                <p class="pro-precio">{{ product.price | money }}</p>
-                {% if product.tags.size > 0 %}
-                    <p class="pro-tags">Tags: {{ product.tags | join: ', ' }}</p>              
-                {% else %}
-                    <p class="pro-tags">Este producto no tiene tags. {{ band  }}</p>
-                {% endif %}
-            </div>
-
-            {% endif %}
-            
-        {% endfor %}    
-    
+                <div class="card">
+                    <div class="card-header">
+                        <a href="{{ product.url }}"><img class="w100" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}"></a>                                                            
+                        <a class="pro-titulo" href="{{ product.url }}">
+                            {{ product.title }}
+                        </a>
+                        <p class="pro-precio">{{ product.price | money }}</p>
+                        {% if product.tags.size > 0 %}
+                            <p class="pro-tags">Tags: {{ product.tags | join: ', ' }}</p>              
+                        {% else %}
+                            <p class="pro-tags">Este producto no tiene tags. {{ band  }}</p>
+                        {% endif %}                
+                    </div>
+                    <div class="card-footer">
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                        <button class="boton" type="submit">Agregar al carrito</button>
+                    </div>
+                </div>
+            {% endif %}            
+        {% endfor %}        
     </div>  
 </div>
-
 {% comment %}
 Aca muestro las ofertas especiales
 {% endcomment %}
-<div class="ofertas-especiales">
-  
-    <h1>Ofertas Especiales</h1>
-    <div class="grid w100">    
-      
+<div class="ofertas-especiales">  
+    <h1 class="titulo">Ofertas Especiales</h1>
+    <div class="grid w100">          
         {% assign productos = collections.all.products %}
         {% for product in productos %}      
-
             {% assign band = false %}
-
             {% for tag in product.tags %}                
                 {% comment %}
                     Comparo el tag de cada producto con el tag ingresado por defecto ofertas-especiales
@@ -91,70 +82,26 @@ Aca muestro las ofertas especiales
                 {% assign band = true %}
                 {% endif %}
             {% endfor %}
-
             {% if band %}
-
                 <div class="card">
-                    <a href="{{ product.url }}"><img class="w100" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}"></a>
-                    <a class="pro-titulo" href="{{ product.url }}">
-                        {{ product.title }}
-                    </a>                     
-                    <p class="pro-precio">{{ product.price | money }}</p>
-                    {% if product.tags.size > 0 %}
-                        <p class="pro-tags">Tags: {{ product.tags | join: ', ' }}</p>              
-                    {% else %}
-                        <p class="pro-tags">Este producto no tiene tags. {{ band  }}</p>
-                    {% endif %}
+                    <div class="card-header">
+                        <a href="{{ product.url }}"><img class="w100" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}"></a>                                                                                     
+                        <a class="pro-titulo" href="{{ product.url }}">
+                            {{ product.title }}
+                        </a>
+                        <p class="pro-precio">{{ product.price | money }}</p>
+                        {% if product.tags.size > 0 %}
+                            <p class="pro-tags">Tags: {{ product.tags | join: ', ' }}</p>              
+                        {% else %}
+                            <p class="pro-tags">Este producto no tiene tags. {{ band  }}</p>
+                        {% endif %}                    
+                    </div>
+                    <div class="card-footer">
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                        <button class="boton" type="submit">Agregar al carrito</button>
+                    </div>
                 </div>
-
-            {% endif %}
-          
+            {% endif %}          
         {% endfor %}          
     </div>    
 </div>
-
-<style>
-    .productos-populares{
-        padding-left: 5rem;
-        padding-right: 5rem;
-        max-width: var(--page-width);
-        margin: 0 auto;
-        margin-top: 60px;
-        margin-bottom: 60px;
-    }
-    .ofertas-especiales{
-        padding-left: 5rem;
-        padding-right: 5rem;
-        max-width: var(--page-width);
-        margin: 0 auto;
-        margin-top: 60px;
-        margin-bottom: 60px;
-    }
-
-    .w100{
-        width: 100%;
-    }
-    .w100 .card{
-        width: calc(25% - 16px);
-    }
-    .pro-titulo{
-        font-size: 22px;
-        color: black;
-        text-decoration: none;
-    }
-    .pro-precio{
-        margin: 0px;
-        font-size: 26px;
-        color: gray;
-        text-decoration: none;
-    }
-    .pro-tags{
-        margin: 0px;
-    }
-    @media only screen and (max-width: 989px) {
-        .w100 .card {
-            width: calc(50% - 16px);
-        }
-    }
-
-</style>

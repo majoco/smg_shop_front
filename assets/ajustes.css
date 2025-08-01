@@ -1,0 +1,300 @@
+/*header*/
+.utility-bar--bottom-border {
+  background: #ab6f00;
+}
+.announcement-bar__message {
+  color: white;
+  font-size: 20px;
+}
+sticky-header {
+  background: orange !important;
+}
+.header__menu-item span {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/*CSS seccion productos populares y ofertas*/
+.productos-populares {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.ofertas-especiales {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.w100 {
+  width: 100%;
+}
+.w100 .card {
+  width: calc(24% - 5px);
+  margin: 5px;
+  background-color: #edeefa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 3px gray;
+  animation: aparecerDesdeAbajo 1s ease-out forwards;
+}
+.w100 .card:hover {
+  box-shadow: 1px 1px 2px gray;
+  background-color: rgb(250 243 237);
+}
+
+@keyframes aparecerDesdeAbajo {
+  from {
+    transform: translateY(100%); /* Comienza abajo */
+    opacity: 0; /* Inicialmente invisible */
+  }
+  to {
+    transform: translateY(0); /* Termina en su posición original */
+    opacity: 1; /* Visible al final */
+  }
+}
+
+.slide-in {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+.slide-in.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.card-header {
+  height: 80%;
+  text-align: center;
+  padding: 15px;
+}
+.card-header img {
+  height: 60%;
+}
+.card-footer {
+  height: 20%;
+  text-align: center;
+}
+.titulo {
+  font-family: "Open Sans", sans-serif;
+  color: #f12a2d;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.pro-titulo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #be1719;
+  text-decoration: none;
+  font-family: "Playwrite AU QLD", cursive;
+  line-height: normal;
+}
+.pro-precio {
+  margin: 0px;
+  font-size: 22px;
+  color: black;
+  text-decoration: none;
+  font-family: "Amarante", serif;
+  font-weight: 700;
+  line-height: normal;
+}
+.pro-tags {
+  margin: 0px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  line-height: normal;
+}
+
+.precio-anterior {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 10px;
+}
+
+.precio-nuevo {
+  font-size: 1.5rem;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.boton-oferta {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #ff6b01;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.boton {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  /* padding-inline: 1.25rem; */
+  filter: drop-shadow(6px 6px 0 #b26a13);
+  position: relative;
+  text-transform: uppercase;
+  transform: translate(0);
+  transition: all 0.3s;
+  white-space: nowrap;
+  z-index: 10;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  line-height: 1.625rem;
+  cursor: pointer;
+  background: #f29022;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #f29022;
+  margin: auto;
+  top: 25%;
+  text-decoration: none;
+}
+.boton:hover {
+  transform: translate(3px, 3px);
+  background: #d8790d;
+}
+
+/*CSS de seccion contador*/
+.div-contador {
+  padding: 20px;
+  font-family: sans-serif;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 600px;
+  width: 100%;
+  max-width: 100%;
+  padding: 60px 40px;
+  margin: auto;
+  vertical-align: middle;
+  text-align: center;
+  background: #00bcd4;
+}
+.contador-tiempo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: white;
+  font-size: 40px;
+}
+.div-contador h2 {
+  font-size: 30px;
+  color: white;
+  font-weight: 600;
+  /* color: #be1719; */
+  text-decoration: none;
+  font-family: Playwrite AU QLD, cursive;
+  line-height: normal;
+}
+
+.div-contador h3 {
+  color: white;
+  font-size: 50px;
+  margin: 5px;
+  font-weight: 600;
+}
+.div-contador p {
+  font-size: 30px;
+  margin: 0px;
+  color: white;
+}
+.div-contador .precio-anterior {
+  font-size: 30px;
+  margin: 0px;
+}
+.precio-nuevo {
+  font-size: 30px;
+  margin: 0px;
+  color: white;
+}
+
+/*Formulario de subscripcion*/
+#mc_embed_signup {
+  margin: auto;
+}
+#mc_embed_signup form {
+  box-shadow: 3px 3px 10px gray;
+  background-color: #faf3ed !important;
+  padding: 40px;
+  border-radius: 10px;
+}
+#mc_embed_signup form:hover {
+  background-color: #edeefa !important;
+}
+#div-subscription {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+#mc_embed_signup #mc-embedded-subscribe-form {
+  background: transparent;
+}
+#mc_embed_signup h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #be1719;
+  text-decoration: none;
+  font-family: Playwrite AU QLD, cursive;
+  line-height: normal;
+  text-align: center;
+}
+#mc_embed_signup .button {
+  background-color: orange;
+}
+#mc_embed_signup .mc-field-group label {
+  display: block;
+  margin-bottom: 3px;
+  font-family: Open Sans, sans-serif;
+  color: #be1719;
+}
+
+/*Pagina producto*/
+.metadatos strong {
+  color: #f29022;
+  font-size: 28px;
+}
+.metadatos p {
+  margin: 0px;
+  color: #1986a1;
+  font-size: 22px;
+  line-height: normal;
+}
+
+/*optimizando footer*/
+.footer-block--newsletter {
+  display: none !important;
+}
+.newsletter-form {
+  display: none !important;
+}
+
+@media only screen and (max-width: 989px) {
+  .w100 .card {
+    width: calc(50% - 16px);
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .w100 .card {
+    width: 100%;
+  }
+}

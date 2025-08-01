@@ -29,8 +29,8 @@
     {
         "type": "text",
         "id": "end_date",
-        "label": "Fecha de finalización (formato: 2025-07-28T23:59:59)",
-        "default": "2025-07-29T19:59:59"
+        "label": "Fecha de finalización (formato: 2025-08-01T23:59:59)",
+        "default": "2025-08-01T19:59:59"
     }
     ],
     "presets": [
@@ -59,11 +59,11 @@
             <span class="precio-nuevo">{{ product.price | money }}</span>
             </p>
 
-            <a class="boton-oferta" href="{{ section.settings.button_link }}">
+            <a class="boton" href="{{ section.settings.button_link }}">
             {{ section.settings.button_text }}
             </a>
 
-            <div id="contador-tiempo">
+            <div id="contador-tiempo" class="contador-tiempo">
                 <span id="dias">00</span>d :
                 <span id="horas">00</span>h :
                 <span id="minutos">00</span>m :
@@ -101,77 +101,4 @@
             }, 1000);
         });
     </script>
-
-    <style>        
-        .precio-anterior {
-            text-decoration: line-through;
-            color: #888;
-            margin-right: 10px;
-        }
-
-        .precio-nuevo {
-            font-size: 1.5rem;
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        .boton-oferta {
-            display: inline-block;
-            margin-top: 10px;
-            background-color: #ff6b01;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }              
-
-        .div-contador {
-            padding: 20px;
-            font-family: sans-serif;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 600px;
-            width: 100%;
-            max-width: 100%;
-            padding: 60px 40px;
-            margin: auto;
-            vertical-align: middle;
-            text-align: center;
-            background: #00BCD4;
-        }
-        #contador-tiempo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 10px;
-            color: white;
-            font-size: 40px;
-        }
-        #div-contador h2{
-            font-size: 30px;
-            color: white;
-            font-weight: 600;
-        }
-
-        #div-contador h3{
-            color: white;
-            font-size: 50px;
-            margin: 5px;
-            font-weight: 600;
-        }
-        #div-contador p{
-            font-size: 30px;
-            margin: 0px;
-            color: white;
-        }
-        #div-contador .precio-anterior {
-            font-size: 30px;
-            margin: 0px;    
-        }
-        .precio-nuevo {
-            font-size: 30px;
-            margin: 0px;
-            color: white;
-        }
-    </style>
 {% endif %}
